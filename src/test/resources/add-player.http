@@ -1,0 +1,11 @@
+###
+
+PUT http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "alpha",
+  "firstName": "Alpha",
+  "lastName": "Beta",
+  "balance": 20.0
+}

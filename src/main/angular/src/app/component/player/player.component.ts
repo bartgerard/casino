@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PlayerService} from '../../service/player.service';
-import {SubscribableService} from '../../common/subscribable.service';
 import {Observable} from 'rxjs';
 import {Player} from '../../model/player';
+import {SubscribableService} from '../../common/service/subscribable.service';
 
 @Component({
     selector: 'app-player',
