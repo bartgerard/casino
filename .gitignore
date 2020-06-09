@@ -33,7 +33,6 @@ hs_err_pid*
 
 # dependencies
 /node_modules
-**/node_modules
 
 # profiling files
 chrome-profiler-events*.json
@@ -70,5 +69,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/src/main/angular/node_modules/
-/src/main/angular/dist/
+/target/
+/src/main/resources/static/
+/casino.db
+*.iml
