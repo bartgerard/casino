@@ -1,0 +1,9 @@
+/*
+previously --> ::ng-deep :root
+now use --> :host
+ */
+
+:host {
+    --main-border-width: 0.05rem;
+    --main-border-color: lightgrey;
+}

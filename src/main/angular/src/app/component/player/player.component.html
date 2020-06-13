@@ -1,3 +1,13 @@
-<div *ngFor="let player of players$ | async">
-    {{player.firstName}}
+<div class="row player__row" *ngIf="player" (click)="select($event, player)">
+    <div class="col-md-1 col-sm-1 d-md-flex d-sm-none" *ngIf="!position">
+    </div>
+    <div class="col-md-1 col-sm-1" *ngIf="position">
+        #{{position}}
+    </div>
+    <div class="col-md-3 col-sm-11">
+        {{player.firstName}} {{player.lastName}}
+    </div>
+    <div class="col-md-8 col-sm-12 player__row__balance">
+        {{player.balance | currency: 'EUR'}}
+    </div>
 </div>

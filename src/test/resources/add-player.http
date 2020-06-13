@@ -7,5 +7,53 @@ Content-Type: application/json
   "username": "alpha",
   "firstName": "Alpha",
   "lastName": "Beta",
-  "balance": 20.0
+  "balance": 1000.0
+}
+
+###
+
+PUT http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "gamma",
+  "firstName": "Gamma",
+  "lastName": "Delta",
+  "balance": 1000.0
+}
+
+###
+
+PUT http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "epsilon",
+  "firstName": "Epsilon",
+  "lastName": "Zeta",
+  "balance": 1000.0
+}
+
+###
+
+PUT http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "eta",
+  "firstName": "Eta",
+  "lastName": "Theta",
+  "balance": 1000.0
+}
+
+###
+
+PUT http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "username": "iota",
+  "firstName": "Iota",
+  "lastName": "Kappa",
+  "balance": 1000.0
 }

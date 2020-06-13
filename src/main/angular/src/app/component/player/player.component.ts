@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PlayerService} from '../../service/player.service';
-import {Observable} from 'rxjs';
 import {Player} from '../../model/player';
 import {SubscribableService} from '../../common/service/subscribable.service';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
     selector: 'app-player',
@@ -11,16 +11,33 @@ import {SubscribableService} from '../../common/service/subscribable.service';
 })
 export class PlayerComponent extends SubscribableService implements OnInit {
 
-    players$: Observable<Player[]>;
+    @Input('position')
+    public position: number;
+
+    @Input('player')
+    public player: Player;
 
     constructor(
-        private playerService: PlayerService
+        private _playerService: PlayerService,
+        private _router: Router
     ) {
         super();
     }
 
     ngOnInit(): void {
-        this.players$ = this.playerService.allPlayers();
+    }
+
+    select(
+        $event: MouseEvent,
+        player: Player
+    ) {
+        const navigationExtras: NavigationExtras = {
+            queryParams: {
+                'username': player.username
+            }
+        }
+
+        this._router.navigate(['/player-management'], navigationExtras).then();
     }
 
 }

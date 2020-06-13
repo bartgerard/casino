@@ -7,13 +7,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @RestController
@@ -25,9 +28,23 @@ public class PlayerRestController {
 
     private final PlayerRepository playerRepository;
 
+    @GetMapping("{username}")
+    public Player findPlayerByUsername(
+            @PathVariable("username") final String username
+    ) {
+        return playerRepository.findById(username)
+                .orElseThrow(() -> new IllegalArgumentException("player not found [username=" + username + "]"));
+    }
+
     @GetMapping
-    public List<Player> getAllPlayers() {
-        return playerRepository.findAll();
+    public List<Player> findAllPlayers() {
+        return playerRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Player::getBalance, Comparator.reverseOrder())
+                        .thenComparing(Player::getFirstName)
+                        .thenComparing(Player::getLastName)
+                )
+                .collect(Collectors.toList());
     }
 
     @GetMapping("put")
