@@ -1,4 +1,4 @@
-package be.gerard.casino.model;
+package be.gerard.casino.event;
 
 import lombok.Value;
 

@@ -1,13 +1,13 @@
-<div class="row player__row" *ngIf="player" (click)="select($event, player)">
-    <div class="col-md-1 col-sm-1 d-md-flex d-sm-none" *ngIf="!position">
+<div class="row m-2 p-2 player__row" *ngIf="player" (click)="select($event, player)">
+    <div class="col-md-1 col-1 d-md-flex d-none" *ngIf="!position">
     </div>
-    <div class="col-md-1 col-sm-1" *ngIf="position">
+    <div class="col-md-1 col-1" *ngIf="position">
         #{{position}}
     </div>
-    <div class="col-md-3 col-sm-11">
+    <div class="col-md-3 col-11">
         {{player.firstName}} {{player.lastName}}
     </div>
-    <div class="col-md-8 col-sm-12 player__row__balance">
+    <div class="col-md-8 col-12 player__row__balance">
         {{player.balance | currency: 'EUR'}}
     </div>
 </div>

@@ -1,0 +1,20 @@
+###
+
+PUT http://localhost:8080/api/transfers
+Content-Type: application/json
+
+{
+  "username": "alpha",
+  "amount": 1000.0,
+  "increment": 1000.0
+}
+
+###
+
+GET http://localhost:8080/api/transfers/by-username/alpha
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8080/api/transfers/b5a4a3e8-e2a4-454f-8863-6d4949aee007
+Content-Type: application/json

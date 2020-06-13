@@ -1,5 +1,15 @@
 <app-player [player]="player"></app-player>
 
-<div class="row">
-    Test
+<div class="row m-2 p-2">
+    <div class="col-md-2 col-6 order-md-0 order-2 ui-fluid">
+        <button pButton type="button" label="+" (click)="add(increment)"></button>
+    </div>
+    <div class="col-md-8 col-12 order-md-1 order-0 ui-fluid">
+        <!-- ui-fluid -> result in p-inputNumber width 100% -->
+        <p-inputNumber [(ngModel)]="increment" mode="currency" currency="EUR"></p-inputNumber>
+    </div>
+    <div class="col-md-2 col-6 order-md-2 order-3 ui-fluid">
+        <button pButton type="button" label="-" (click)="add(-increment)"></button>
+    </div>
+    <div class="col-12 m-1 d-md-none order-1"></div>
 </div>

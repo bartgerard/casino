@@ -1,6 +1,4 @@
 .player__row {
-    margin: 0.5rem;
-    padding: 0.5rem;
     border: var(--main-border-width) solid var(--main-border-color);
     border-radius: 10px;
 }

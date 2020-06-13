@@ -24,7 +24,7 @@ export class PlayerService {
         username: string
     ): Observable<Player> {
         return this._http.get<Player>(
-            environment.serverUrl + `/players/${username}`
+            `${environment.serverUrl}/players/${username}`
         );
     }
 

@@ -1,7 +1,7 @@
 package be.gerard.casino.web;
 
 import be.gerard.casino.model.OverviewEvent;
-import be.gerard.casino.model.PlayerChanged;
+import be.gerard.casino.event.PlayerChanged;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.codec.ServerSentEvent;

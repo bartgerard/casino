@@ -4,6 +4,7 @@ export class Player {
         public firstName: string,
         public lastName: string,
         public balance: number,
+        public lastUsedIncrement: number,
     ) {
     }
 }
