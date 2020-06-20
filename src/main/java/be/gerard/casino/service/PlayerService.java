@@ -49,7 +49,9 @@ public class PlayerService {
         final Player player = playerRepository.findById(event.getUsername())
                 .orElseThrow(IllegalArgumentException::new);
 
-        final List<Transfer> transfers = transferRepository.findAllByUsername(event.getUsername());
+        final List<Transfer> transfers = transferRepository.findAllByUsername(
+                event.getUsername()
+        );
 
         final BigDecimal balance = transfers.stream()
                 .map(Transfer::getAmount)

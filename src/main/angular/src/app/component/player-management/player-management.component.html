@@ -13,3 +13,25 @@
     </div>
     <div class="col-12 m-1 d-md-none order-1"></div>
 </div>
+
+<p-table [value]="transfers" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="caption">
+        Transfers
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Timestamp</th>
+            <th>Amount</th>
+            <th style="width:4em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-transfer>
+        <tr>
+            <td>{{transfer.timestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{transfer.amount}}</td>
+            <td style="text-align:center">
+                <button pButton type="button" icon="pi pi-trash" class="ui-button-danger" (click)="deleteTransfer(transfer.id)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

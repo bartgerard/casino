@@ -10,7 +10,7 @@ import {HeaderComponent} from './component/header/header.component';
 import {FooterComponent} from './component/footer/footer.component';
 import {PlayerManagementComponent} from './component/player-management/player-management.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ButtonModule, InputNumberModule} from 'primeng';
+import {ButtonModule, InputNumberModule, TableModule} from 'primeng';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -29,7 +29,8 @@ import {FormsModule} from '@angular/forms';
         HttpClientModule,
         ButtonModule,
         FormsModule,
-        InputNumberModule
+        InputNumberModule,
+        TableModule
     ],
     providers: [],
     bootstrap: [

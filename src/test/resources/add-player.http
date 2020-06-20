@@ -1,5 +1,10 @@
 ###
 
+DELETE http://localhost:8080/api/transfers/5a66af69-0fd7-4416-8ccc-220c673fc6b3
+Content-Type: application/json
+
+###
+
 PUT http://localhost:8080/api/players
 Content-Type: application/json
 

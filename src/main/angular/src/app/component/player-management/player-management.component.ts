@@ -15,6 +15,7 @@ import {SubscribableService} from '../../common/service/subscribable.service';
 export class PlayerManagementComponent extends SubscribableService implements OnInit {
 
     player: Player;
+    transfers: Transfer[];
 
     increment: number = 1000;
 
@@ -40,6 +41,13 @@ export class PlayerManagementComponent extends SubscribableService implements On
                 this.player = player;
                 this.increment = player.lastUsedIncrement || 1000;
             });
+
+        this.subs.sink = this._transferService.findTransfersByUsername(
+            username
+        )
+            .subscribe(transfers => {
+                this.transfers = transfers;
+            });
     }
 
     add(
@@ -47,11 +55,23 @@ export class PlayerManagementComponent extends SubscribableService implements On
     ) {
         this._transferService.transfer(
             new Transfer(
+                null,
                 this.player.username,
                 amount,
-                this.increment
+                this.increment,
+                null
             )
         )
             .subscribe(val => this.retrievePlayer(this.player.username));
+    }
+
+    deleteTransfer(
+        id: string
+    ) {
+        this._transferService.delete(
+            this.player.username,
+            id
+        )
+            .subscribe(() => this.retrievePlayer(this.player.username));
     }
 }
