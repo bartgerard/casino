@@ -14,10 +14,107 @@
     <div class="col-12 m-1 d-md-none order-1"></div>
 </div>
 
+<h3>Blackjack</h3>
+
+
+<div class="row m-2 p-2">
+    <div class="col-md-8 col-9 p-2">
+        Win!
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="1:1" (click)="add(increment)"></button>
+    </div>
+    <div class="col-md-8 col-9 p-2">
+        Blackjack (Aas + "10")
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="1.5:1" (click)="add(1.5 * increment)"></button>
+    </div>
+</div>
+
+<h3>Roulette</h3>
+
+<div class="row m-2 p-2">
+    <div class="col-md-6 col-8 p-2">
+        Red/Black, Even/Odd, Low/High
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        18
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="1:1" (click)="add(increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        Dozen, Column
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        12
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="2:1" (click)="add(2 * increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        Double Street
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        6
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="5:1" (click)="add(5 * increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        First Five
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        5
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="6:1" (click)="add(6 * increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        Corner
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        4
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="8:1" (click)="add(8 * increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        Street
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        3
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="11:1" (click)="add(11 * increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        Split
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        2
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="17:1" (click)="add(17 * increment)"></button>
+    </div>
+    <div class="col-md-6 col-8 p-2">
+        Straight
+    </div>
+    <div class="col-md-2 col-1 p-2">
+        1
+    </div>
+    <div class="col-md-4 col-3 p-2">
+        <button pButton class="w-100" type="button" label="35:1" (click)="add(35 * increment)"></button>
+    </div>
+</div>
+
+<h3>Transfers</h3>
+
 <p-table [value]="transfers" [paginator]="true" [rows]="10">
-    <ng-template pTemplate="caption">
+    <!--<ng-template pTemplate="caption">
         Transfers
-    </ng-template>
+    </ng-template>-->
     <ng-template pTemplate="header">
         <tr>
             <th>Timestamp</th>
@@ -30,7 +127,8 @@
             <td>{{transfer.timestamp | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{transfer.amount}}</td>
             <td style="text-align:center">
-                <button pButton type="button" icon="pi pi-trash" class="ui-button-danger" (click)="deleteTransfer(transfer.id)"></button>
+                <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                        (click)="deleteTransfer(transfer.id)"></button>
             </td>
         </tr>
     </ng-template>
