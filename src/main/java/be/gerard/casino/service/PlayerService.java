@@ -10,10 +10,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -35,10 +37,35 @@ public class PlayerService {
         return playerRepository.findAll();
     }
 
-    public void save(
+    public void add(
             final Player player
     ) {
+        Assert.hasText(player.getUsername(), "player.username is invalid [null]");
+        Assert.hasText(player.getFirstName(), "player.firstName is invalid [null]");
+        Assert.hasText(player.getLastName(), "player.lastName is invalid [null]");
+
         playerRepository.save(player);
+
+        if (Objects.nonNull(player.getBalance())) {
+            transferRepository.save(Transfer.builder()
+                    .username(player.getUsername())
+                    .amount(player.getBalance())
+                    .increment(player.getBalance())
+                    .build()
+            );
+            eventPublisher.publishEvent(MoneyTransferred.builder()
+                    .username(player.getUsername())
+                    .build()
+            );
+        } else {
+            eventPublisher.publishEvent(new PlayerChanged());
+        }
+    }
+
+    public void removeById(
+            final String username
+    ) {
+        playerRepository.deleteById(username);
         eventPublisher.publishEvent(new PlayerChanged());
     }
 

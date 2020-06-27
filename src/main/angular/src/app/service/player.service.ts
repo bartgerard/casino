@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Player} from '../model/player';
 import {environment} from '../../environments/environment';
@@ -14,9 +14,17 @@ export class PlayerService {
     ) {
     }
 
-    allPlayers(): Observable<Player[]> {
+    allPlayers(
+        orderBy: string = 'SCORE'
+    ): Observable<Player[]> {
+        const params = new HttpParams()
+            .set('orderBy', orderBy);
+
         return this._http.get<Player[]>(
-            environment.serverUrl + '/players'
+            environment.serverUrl + '/players',
+            {
+                params
+            }
         );
     }
 
@@ -24,6 +32,23 @@ export class PlayerService {
         username: string
     ): Observable<Player> {
         return this._http.get<Player>(
+            `${environment.serverUrl}/players/${username}`
+        );
+    }
+
+    add(
+        player: Player
+    ): Observable<void> {
+        return this._http.put<void>(
+            `${environment.serverUrl}/players`,
+            player
+        );
+    }
+
+    remove(
+        username: string
+    ): Observable<void> {
+        return this._http.delete<void>(
             `${environment.serverUrl}/players/${username}`
         );
     }

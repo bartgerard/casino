@@ -3,6 +3,7 @@ import {SubscribableService} from '../../common/service/subscribable.service';
 import {Observable} from 'rxjs';
 import {Player} from '../../model/player';
 import {PlayerService} from '../../service/player.service';
+import {OverviewService} from '../../service/overview.service';
 
 @Component({
     selector: 'app-players',
@@ -11,16 +12,27 @@ import {PlayerService} from '../../service/player.service';
 })
 export class PlayersComponent extends SubscribableService implements OnInit {
 
+    data: string;
     players$: Observable<Player[]>;
 
     constructor(
-        private playerService: PlayerService
+        private _overviewService: OverviewService,
+        private _playerService: PlayerService,
     ) {
         super();
     }
 
     ngOnInit(): void {
-        this.players$ = this.playerService.allPlayers();
+        this.refresh();
+        this.subs.sink = this._overviewService.events()
+            .subscribe(event => {
+                this.data = event.test;
+                this.refresh();
+            });
+    }
+
+    refresh(): void {
+        this.players$ = this._playerService.allPlayers('NAME');
     }
 
 }

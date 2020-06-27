@@ -1,0 +1,21 @@
+<div class="m-4 ui-float-label">
+    <input id="username" type="text" size="50" pInputText [(ngModel)]="player.username">
+    <label for="username">Username</label>
+</div>
+<div class="m-4 ui-float-label">
+    <input id="first-name" type="text" size="50" pInputText [(ngModel)]="player.firstName">
+    <label for="first-name">First Name</label>
+</div>
+<div class="m-4 ui-float-label">
+    <input id="last-name" type="text" size="50" pInputText [(ngModel)]="player.lastName">
+    <label for="last-name">Last Name</label>
+</div>
+
+<div class="row m-4">
+    <div class="col-3">
+        <button pButton type="button" class="p-2" icon="pi pi-plus" iconPos="left" label="Add" (click)="handleAdd()"></button>
+    </div>
+    <div class="col-3">
+        <button pButton type="button" class="p-2" icon="pi pi-trash" iconPos="left" label="Remove" (click)="handleRemove()"></button>
+    </div>
+</div>

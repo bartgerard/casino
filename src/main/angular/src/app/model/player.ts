@@ -1,10 +1,10 @@
 export class Player {
     constructor(
-        public username: string,
-        public firstName: string,
-        public lastName: string,
-        public balance: number,
-        public lastUsedIncrement: number,
+        public username: string = null,
+        public firstName: string = null,
+        public lastName: string = null,
+        public balance: number = 2000,
+        public lastUsedIncrement: number = 2000,
     ) {
     }
 }
