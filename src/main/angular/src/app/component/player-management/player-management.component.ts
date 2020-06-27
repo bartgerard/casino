@@ -15,7 +15,7 @@ import {SubscribableService} from '../../common/service/subscribable.service';
 export class PlayerManagementComponent extends SubscribableService implements OnInit {
 
     player: Player;
-    transfers: Transfer[];
+    transfers: Transfer[] = [];
 
     increment: number = 1000;
 
