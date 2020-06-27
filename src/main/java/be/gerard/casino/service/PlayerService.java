@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class PlayerService {
 
@@ -59,14 +57,15 @@ public class PlayerService {
                 .map(Transfer::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        player.setBalance(balance);
-
         final BigDecimal lastUsedIncrement = transfers.stream()
                 .max(Comparator.comparing(Transfer::getTimestamp))
                 .map(Transfer::getIncrement)
                 .orElse(BigDecimal.ZERO);
 
+        player.setBalance(balance);
         player.setLastUsedIncrement(lastUsedIncrement);
+
+        playerRepository.save(player);
 
         eventPublisher.publishEvent(new PlayerChanged());
     }

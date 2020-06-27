@@ -4,6 +4,8 @@ spring:
     url: jdbc:sqlite:casino.db
     username: sa
     password: sa
+    hikari:
+      connection-timeout: 3000
   jpa:
     hibernate:
       ddl-auto: update

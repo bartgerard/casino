@@ -1,10 +1,11 @@
 package be.gerard.casino.web;
 
-import be.gerard.casino.model.OverviewEvent;
 import be.gerard.casino.event.PlayerChanged;
+import be.gerard.casino.model.OverviewEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.codec.ServerSentEvent;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +40,8 @@ public class OverviewRestController {
         );
     }
 
+
+    @Async
     @EventListener
     public void handle(
             final PlayerChanged event
