@@ -50,7 +50,7 @@ public class PlayerService {
             transferRepository.save(Transfer.builder()
                     .username(player.getUsername())
                     .amount(player.getBalance())
-                    .increment(player.getBalance())
+                    .increment(BigDecimal.valueOf(100, 0))
                     .build()
             );
             eventPublisher.publishEvent(MoneyTransferred.builder()
